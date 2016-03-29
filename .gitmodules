@@ -1,3 +1,6 @@
 [submodule "ggsv"]
 	path = ggsv
 	url = https://github.com/edawson/ggsv.git
+[submodule "vg"]
+	path = vg
+	url = https://github.com/edawson/vg.git
