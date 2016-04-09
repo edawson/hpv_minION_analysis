@@ -7,7 +7,7 @@
 ## demonstrate VG's ability to classify reads
 ## by genomic feature coverage.
 
-vg=../vg-81b5a2cb
+vg=~/sandbox/vg/bin/vg
 
 hpv_one=../hpv_1.fa
 hpv_sixteen=../hpv_16.fa
