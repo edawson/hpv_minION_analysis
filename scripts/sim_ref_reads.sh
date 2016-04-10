@@ -49,7 +49,6 @@ do
     do
         echo "Constructed and indexed"
         my_reads=`sim_reads ${my_vg} ${num_reads} ${read_len} ${error_rate} ${i_rate}`
-        map ${my_vg} ${my_reads}
     done
 done
 
@@ -61,6 +60,5 @@ do
     do
         echo "Constructed and indexed"
         my_reads=`sim_reads ${my_vg} ${num_reads} ${read_len} ${e_rate} ${indel_rate}`
-        map ${my_vg} ${my_reads}
     done
 done
