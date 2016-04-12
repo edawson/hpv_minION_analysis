@@ -47,7 +47,7 @@ do
     index ${my_vg}
     for error_rate in 0.0 0.01 0.05 0.15 0.25
     do
-        echo "Constructed and indexed"
+        echo "Making error: $error_rate"
         my_reads=`sim_reads ${my_vg} ${num_reads} ${read_len} ${error_rate} ${i_rate}`
     done
 done
@@ -58,7 +58,7 @@ do
     my_vg=`basename $i .fa`.vg
     for indel_rate in 0.0000 0.01 0.05 0.15 0.25
     do
-        echo "Constructed and indexed"
+        echo "Makind indel: $indel_rate"
         my_reads=`sim_reads ${my_vg} ${num_reads} ${read_len} ${e_rate} ${indel_rate}`
     done
 done
