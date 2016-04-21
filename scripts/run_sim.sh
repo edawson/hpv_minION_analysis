@@ -15,10 +15,10 @@ hpv_two=../hpv_2.fa
 
 node_len=50
 
-num_reads=1000
+num_reads=10000
 read_len=7500
-e_rate=0.0
-i_rate=0.0
+e_rate=$1
+i_rate=$2
 r_seed=110
 
 function construct () {
@@ -45,20 +45,8 @@ for i in ${hpv_one} ${hpv_two} ${hpv_sixteen}
 do
     my_vg=`construct ${i}`
     index ${my_vg}
-    for error_rate in $1
-    do
-        echo "Making error: $error_rate"
-        my_reads=`sim_reads ${my_vg} ${num_reads} ${read_len} ${error_rate} ${i_rate}`
-    done
+    echo "Making reads with error rate $e_rate and indel rate $i_rate"
+    my_reads=`sim_reads ${my_vg} ${num_reads} ${read_len} ${e_rate} ${i_rate}`
 done
 
 
-for i in ${hpv_one} ${hpv_two} ${hpv_sixteen}
-do
-    my_vg=`basename $i .fa`.vg
-    for indel_rate in $1
-    do
-        echo "Making indel: $indel_rate"
-        my_reads=`sim_reads ${my_vg} ${num_reads} ${read_len} ${e_rate} ${indel_rate}`
-    done
-done

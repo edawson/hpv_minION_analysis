@@ -20,7 +20,7 @@ gen_features (){
     for i in $1
     do
         count=$(($count + 1))
-        ret+="${count}:$(($i - 1)) "
+        ret+="${count}:$(($i)) "
     done
     echo ${ret}
 }
@@ -30,8 +30,8 @@ count=0
 trap control_c INT SIGTERM SIGINT
 while read line
 do
-    label=$(echo $line | cut -f 1 | grep -o "hpv_[0-9]\{1,10\}")
+    label="$(echo $line | cut -f 1 | grep -o "hpv_[0-9]\{1,10\}")"
     category=$(name_to_cat $label)
     features=`gen_features "$(echo $line | cut -f2- -d" ")"`
-    echo "${category} 1.0 $label| ${features}"
+    echo "${category} 1.0 '$label |vector ${features}"
 done
