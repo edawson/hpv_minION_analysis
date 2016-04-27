@@ -4,3 +4,6 @@
 [submodule "vg"]
 	path = vg
 	url = https://github.com/edawson/vg.git
+[submodule "HPV_PanGenome"]
+	path = HPV_PanGenome
+	url = https://github.com/edawson/HPV_PanGenome.git
