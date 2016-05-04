@@ -47,7 +47,7 @@ do
     seq 10 | parallel --will-cite -j 4 "${vg} sim -n ${num_reads} -l ${read_len} -s {} -x `basename ${my_vg} .vg`.xg ${my_vg} > {}.n${num_reads}.e${e_rate}.i${i_rate}.l${read_len}.reads.`basename $my_vg .vg`.txt"
     echo "reads made. Making FASTQ."
     python ../../scripts/format_reads.py -i <(cat *n${num_reads}.e${e_rate}.i${i_rate}.l${read_len}.reads.`basename $my_vg .vg`.txt) -q ")" -n ${my_vg} > n${num_reads}.e${e_rate}.i${i_rate}.l${read_len}.reads.`basename $my_vg .vg`.fq
-    my_reads=`sim_reads ${my_vg} ${num_reads} ${read_len} ${e_rate} ${i_rate}`
+    #my_reads=`sim_reads ${my_vg} ${num_reads} ${read_len} ${e_rate} ${i_rate}`
     echo "FASTQs made. Next up: $i"
 done
 
