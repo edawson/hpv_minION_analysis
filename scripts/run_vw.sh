@@ -1,6 +1,8 @@
 vw=../
 vg=../
 
-training_vecs=
+model=$1
 
-cat $test_vecs  | ${vw} -t -i hpv_model_3Genome.vw -p /dev/stdout
+gam=$2
+
+cat $gam  | ${vw} -t -i $model -p /dev/stdout

@@ -1,4 +1,4 @@
-vg=../vg/bin/vg
+vg=../vg-v1.1.0-1083-g618ce75
 
 hpv_sixteen=../hpv_16.fa
 
@@ -7,7 +7,7 @@ node_len=50
 num_reads=1000
 read_len=7500
 
-bandwidth=20000
+bandwidth=256
 
 function construct () {
     ${vg} construct -m ${node_len} -r $1 > `basename $1 .fa`.vg;
@@ -24,7 +24,7 @@ for error_rate in 0.0 0.01 0.05 0.15 0.25
 do
     echo "Error: ${error_rate}"
     cat hpv_*error${error_rate}.*indel0.0.fq > tmpError.fq
-    ${vg} map -t 4 -GX -B ${bandwidth} -f tmpError.fq -x hpv_16.xg -g hpv_16.gcsa | tee err${error_rate}.gam | ${vg} vectorize -f -x hpv_16.xg - > hpv_16_Aligned.error${error_rate}.bandwidth${bandwidth}vecs.txt
+    ${vg} map -t 4 -GX -B ${bandwidth} -f tmpError.fq -x hpv_16.xg -g hpv_16.gcsa | tee err${error_rate}.gam | ${vg} vectorize -w -x hpv_16.xg - > hpv_16_Aligned.error${error_rate}.bandwidth${bandwidth}vecs.txt
 done
 
 
@@ -32,5 +32,5 @@ for indel_rate in 0.0000 0.01 0.05 0.15 0.25
 do
     echo "Indels: ${indel_rate}"
     cat hpv_*error0.0.*indel${indel_rate}.fq > tmpIndel.fq
-     ${vg} map -t 4 -GX -B ${bandwidth} -f tmpIndel.fq -x hpv_16.xg -g hpv_16.gcsa | tee ind${indel_rate}.gam | ${vg} vectorize  -a -f -x hpv_16.xg - > hpv_16_Aligned.indel${indel_rate}.vecs.txt
+     ${vg} map -t 4 -GX -B ${bandwidth} -f tmpIndel.fq -x hpv_16.xg -g hpv_16.gcsa | tee ind${indel_rate}.gam | ${vg} vectorize -w -x hpv_16.xg - > hpv_16_Aligned.indel${indel_rate}.vecs.txt
 done
