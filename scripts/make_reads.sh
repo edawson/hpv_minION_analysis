@@ -7,8 +7,8 @@
 ## demonstrate VG's ability to classify reads
 ## by genomic feature coverage.
 
-vg=../vg/bin/vg
-scripts_dir=./
+vg=/home/eric/sandbox/hpv_minION_analysis/vg/bin/vg
+scripts_dir=/home/eric/sandbox/hpv_minION_analysis/scripts
 
 node_len=50
 
@@ -18,7 +18,7 @@ e_rate=0.05
 i_rate=0.10
 r_seed=110
 
-function construct () {
+function construct() {
     ${vg} construct -m ${node_len} -r $1 > `basename $1 .fa`.vg;
     echo "`basename $1 .fa`.vg";
 }
