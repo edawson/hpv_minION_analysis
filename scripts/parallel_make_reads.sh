@@ -44,8 +44,7 @@ echo "Processing $i"
 my_vg=`construct ${i}`
 index ${my_vg}
 echo "Making reads with error rate $e_rate and indel rate $i_rate"
-#seq 10 | parallel --will-cite -j 4 "${vg} sim -n ${num_reads} -l ${read_len} -s {} -x `basename ${my_vg} .vg`.xg ${my_vg} > {}.n${num_reads}.e${e_rate}.i${i_rate}.l${read_len}.reads.`basename $my_vg .vg`.txt"
-${vg} sim -n ${num_reads} -l ${read_len} -s $r_seed -x `basename ${my_vg} .vg`.xg ${my_vg} > n${num_reads}.e${e_rate}.i${i_rate}.l${read_len}.reads.`basename $my_vg .vg`.txt
+seq 10 | parallel --will-cite -j 4 "${vg} sim -n ${num_reads} -l ${read_len} -s {} -x `basename ${my_vg} .vg`.xg ${my_vg} > {}.n${num_reads}.e${e_rate}.i${i_rate}.l${read_len}.reads.`basename $my_vg .vg`.txt"
 echo "reads made. Making FASTQ."
 python $scripts_dir/format_reads.py -i <(cat *n${num_reads}.e${e_rate}.i${i_rate}.l${read_len}.reads.`basename $my_vg .vg`.txt) -q ")" -n ${my_vg} > n${num_reads}.e${e_rate}.i${i_rate}.l${read_len}.reads.`basename $my_vg .vg`.fq
 echo "FASTQs made for: $i"
