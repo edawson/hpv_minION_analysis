@@ -3,9 +3,8 @@ Classifying HPV strains with vowpal-wabbit
 Eric T Dawson
 
 ## Problem setup
-Given a single HPV graph and a set of different reference genomes, can we train a machine learning model to
-recognize simulated reads from each reference genome (even if there are errors/indels
-in the reads)?
+Given a single HPV graph and a set of different reference genomes, can we
+use machine learning to predict which genome a simulated read came from?
 
 
 [vg](https:/github.com/vgteam/vg.git) now includes a `vectorize` command to transform mappings
@@ -45,3 +44,17 @@ and vectorize them.
     vg vectorize -w -a -x $(base_name).circ.xg aln.gam > aln.vecs.txt
 
 ## Training and testing a learning model on our vectors
+Now that we have vectors, we can take a subset and train our model on it. We'll use 10% (300 / 3000 vectors) for our training set:
+
+    cat aln.vecs.txt | shuf | head -n 1000 | vw --oaa 3 --binary --ngram 5 --passes=20 --threads  -f trained.model --cache_file .cache
+
+And now we can test on our whole dataset and make a confusion matrix to see what they're classified as:  
+
+   cat aln.vecs.txt | vw -i trained.model -p /dev/stdout | tee pred.txt | python ../scripts/make_confusion_matrix.py -c mappings.text 
+
+And we do pretty well:
+
+                    hpv_1   hpv_16  hpv_2
+            hpv_1   1000    0       0
+            hpv_16  0       1000    0
+            hpv_2   0       0       1000

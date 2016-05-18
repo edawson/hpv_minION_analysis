@@ -34,7 +34,7 @@ train_me.vecs.wabbit: train_me.gam train_me.fq $(base_name).circ.xg
 	$(VG) vectorize -w -a -x $(base_name).circ.xg -M mappings.text $< > $@
 	
 trained.model: train_me.vecs.wabbit train_me.fq train_me.gam $(base_name).circ.xg
-	if [-e .cache ]; then rm .cache; fi  && head -n 1000 $< | $(WABBIT) --oaa 3 --binary --ngram 5 --passes=20 --threads  -f trained.model --cache_file .cache
+	if [-e .cache ]; then rm .cache; fi  && head -n 300 $< | $(WABBIT) --oaa 3 --binary --ngram 5 --passes=20 --threads  -f trained.model --cache_file .cache
 
 test_pred.txt: trained.model train_me.vecs.wabbit train_me.fq train_me.gam $(base_name).circ.xg
 	if [  -e .cache ]; then rm .cache; fi && cat train_me.vecs.wabbit | $(WABBIT) -i trained.model -p /dev/stdout | tee $@ | python ../scripts/make_confusion_matrix.py -c mappings.text
