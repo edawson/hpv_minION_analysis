@@ -43,7 +43,10 @@ and vectorize them.
     vg map -GX .5 -A 4 -B 128 -f all.fq -x $(base_name).circ.xg -g $(base_name).circ.gcsa > aln.gam
     vg vectorize -w -a -x $(base_name).circ.xg aln.gam > aln.vecs.txt
 
-## Training and testing a learning model on our vectors
+## Training and testing a learning model on our vectors 
+To train and test a model:  
+`make test_pred.txt`
+
 Now that we have vectors, we can take a subset and train our model on it. We'll use 10% (300 / 3000 vectors) for our training set:
 
     cat aln.vecs.txt | shuf | head -n 1000 | vw --oaa 3 --binary --ngram 5 --passes=20 --threads  -f trained.model --cache_file .cache
