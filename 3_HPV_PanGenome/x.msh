@@ -1,0 +1,21 @@
+
+Mash version 1.1
+
+Type 'mash --license' for license and copyright information.
+
+Usage:
+
+  mash <command> [options] [arguments ...]
+
+Commands:
+
+  bounds  Print a table of Mash error bounds.
+
+  dist    Estimate the distance of query sequences to references.
+
+  info    Display information about sketch files.
+
+  paste   Create a single sketch file from multiple sketch files.
+
+  sketch  Create sketches (reduced representations for fast operations).
+

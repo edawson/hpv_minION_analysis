@@ -1,0 +1,1000 @@
+ 1278  cd stream/
+ 1279  git status
+ 1280  git remote -v
+ 1281  cd ..
+ 1282  vim .gitmodules 
+ 1283  cd ..
+ 1284  cd xg/
+ 1285  rm -rf stream/
+ 1286  git submodule update --init --recursive
+ 1287  ls
+ 1288  cd stream/
+ 1289  git remote add team https://github.com/vgteam/stream.git
+ 1290  git pull team master
+ 1291  git stash makefile
+ 1292  git stash
+ 1293  git pull team master
+ 1294  cd ../../
+ 1295  git submodule update --init --recursive
+ 1296  make clean
+ 1297  cd ..
+ 1298  make clean
+ 1299  make -j 4; make test
+ 1300  git pull team master
+ 1301  ls
+ 1302  git status
+ 1303  git add src/filter.cpp 
+ 1304  git commit -m "Fix build errors with filteR"
+ 1305  git add deps/xg
+ 1306  git commit -m "Update xg"
+ 1307  git push origin master
+ 1308  ls
+ 1309  ./bin/vg construct -r ./test/small/x.fa -v ./test/small/x.vcf.gz -m 50 > x.vg
+ 1310  ./bin/vg index -x x.xg -g x.gcsa x.vg
+ 1311  ./bin/vg index -x x.xg -g x.gcsa -k 11 x.vg
+ 1312  vim src/index.cpp 
+ 1313  vim src/main.cpp 
+ 1314  view test/t/06_vg_index.t 
+ 1315  ls
+ 1316  cd ..
+ 1317  ls
+ 1318  cd hpv_minION_analysis/
+ 1319  cd vg
+ 1320  git pull
+ 1321  make -j 4
+ 1322  git submodule update --init --recursive
+ 1323  make -j 4
+ 1324  make test
+ 1325  vim src/main.cpp 
+ 1326  maketest
+ 1327  make test
+ 1328  vim src/main.cpp 
+ 1329  make test
+ 1330  make clean-vg
+ 1331  make
+ 1332  make clean-vg
+ 1333  make -j 2
+ 1334  git status
+ 1335  git add src/main.cpp 
+ 1336  git commit -m "Removed warning in main_index when no graph is provided, as it chokes tests."
+ 1337  git push origin master
+ 1338  git pull
+ 1339  make clean
+ 1340  time make -j 4
+ 1341  htop
+ 1342  vim src/filter.cpp 
+ 1343  make
+ 1344  vim src/filter.cpp 
+ 1345  exit
+ 1346  view src/filter.hpp 
+ 1347  make
+ 1348  make -j 4
+ 1349  ls
+ 1350  make -j 4
+ 1351  git submodule update --init --recursive
+ 1352  make clean
+ 1353  cd deps/raptor/
+ 1354  view ../../Makefile
+ 1355  ls
+ 1356  vim Makefile.am 
+ 1357  vim Makefile
+ 1358  cd ../../
+ 1359  ls
+ 1360  make clean
+ 1361  vim Makefile
+ 1362  vim deps/raptor/Makefile
+ 1363  make clean
+ 1364  vim Makefile
+ 1365  make -j 4
+ 1366  make clean
+ 1367  time make -j 4
+ 1368  vim src/filter.hpp 
+ 1369  view src/vg.proto 
+ 1370  exit
+ 1371  cd ../vg
+ 1372  source source_me.sh 
+ 1373  cd ../HPV_PanGenome/
+ 1374  time ./make_hpv_pan_genome.sh 
+ 1375  ls
+ 1376  rm .gcsa_friga_1*
+ 1377  rm gi\|*
+ 1378  ls
+ 1379  ../vg cat
+ 1380  ../vg/bin/vg cat
+ 1381  ../vg/bin/vg concat
+ 1382  ../vg/bin/vg msga
+ 1383  vim make_hpv_pan_genome.sh 
+ 1384  ./make_hpv_pan_genome.sh 
+ 1385  vim make_hpv_pan_genome.sh 
+ 1386  ./make_hpv_pan_genome.sh 
+ 1387  exit
+ 1388  cd vg
+ 1389  source source_me.sh 
+ 1390  cd ..
+ 1391  ./vg/bin/vg deconstruct -s small.vg 
+ 1392  ./vg/bin/vg deconstruct -s tiny.vg 
+ 1393  ./vg/bin/vg deconstruct -s small.vg 
+ 1394  vim vg/src/deconstructor.cpp 
+ 1395  vim vg/src/vg.cpp 
+ 1396  ls
+ 1397  cds
+ 1398  cd ..
+ 1399  cd ChernobylAnalysis/
+ 1400  ls
+ 1401  git status
+ 1402  ls
+ 1403  cd ..
+ 1404  cd hpv_minION_analysis/
+ 1405  ls
+ 1406  cd hpv_16_pan/
+ 1407  ls
+ 1408  cd training_set/
+ 1409  ls
+ 1410  ./mash_classify.sh ../../nci.A5.B128.GX0.25.F.gam 
+ 1411  clear
+ 1412  exit
+ 1413  cd sandbox/vg
+ 1414  vim src/filter.cpp 
+ 1415  tmux ls
+ 1416  htop
+ 1417  sensors
+ 1418  ls
+ 1419  cd ../ls
+ 1420  ls
+ 1421  cd ..
+ 1422  ls
+ 1423  cd hpv_minION_analysis/
+ 1424  ls
+ 1425  cat nci.A5.B128.GX0.25.F.gam | ./vg/bin/vg scrub -d 1 | ./vg/bin/vg view -a | wc -l
+ 1426  cd vg
+ 1427  source source_me.sh 
+ 1428  cd ..
+ 1429  cat nci.A5.B128.GX0.25.F.gam | ./vg/bin/vg scrub -d 1 | ./vg/bin/vg view -a | wc -l
+ 1430  cat nci.A5.B128.GX0.25.F.gam | ./vg/bin/vg scrub -d 1 | ./vg/bin/vg view -a - | wc -l
+ 1431  cat nci.A5.B128.GX0.25.F.gam | ./vg/bin/vg scrub -d 1 | ./vg/bin/vg view -a -
+ 1432  ./vg/bin/vg view
+ 1433  cat nci.A5.B128.GX0.25.F.gam | ./vg/bin/vg scrub -d 1 - | ./vg/bin/vg view -a -
+ 1434  cat nci.A5.B128.GX0.25.F.gam | ./vg/bin/vg scrub -d 1 - | ./vg/bin/vg view -a - | wc -l
+ 1435  cat nci.A5.B128.GX0.25.F.gam | ./vg/bin/vg scrub -d 2 - | ./vg/bin/vg view -a - | wc -l
+ 1436  cat nci.A5.B128.GX0.25.F.gam | ./vg/bin/vg scrub -d 5 - | ./vg/bin/vg view -a - | wc -l
+ 1437  cat nci.A5.B128.GX0.25.F.gam | ./vg/bin/vg scrub -d 20 - | ./vg/bin/vg view -a - | wc -l
+ 1438  cat nci.A5.B128.GX0.25.F.gam | ./vg/bin/vg scrub -q 20 - | ./vg/bin/vg view -a - | wc -l
+ 1439  cat nci.A5.B128.GX0.25.F.gam | ./vg/bin/vg scrub -q 1 - | ./vg/bin/vg view -a - | wc -l
+ 1440  cat nci.A5.B128.GX0.25.F.gam | ./vg/bin/vg scrub -q 2 - | ./vg/bin/vg view -a - | wc -l
+ 1441  cat nci.A5.B128.GX0.25.F.gam | ./vg/bin/vg scrub -q 10 - | ./vg/bin/vg view -a - | wc -l
+ 1442  ./vg/bin/vg scrubc
+ 1443  cat nci.A5.B128.GX0.25.F.gam | ./vg/bin/vg scrub -P - | ./vg/bin/vg view -a - | wc -l
+ 1444  cat nci.A5.B128.GX0.25.F.gam | ./vg/bin/vg scrub -C 10 - | ./vg/bin/vg view -a - | wc -l
+ 1445  cat nci.A5.B128.GX0.25.F.gam | ./vg/bin/vg scrub -C 1000 - | ./vg/bin/vg view -a - | wc -l
+ 1446  cat nci.A5.B128.GX0.25.F.gam | ./vg/bin/vg scrub -S 10 - | ./vg/bin/vg view -a - | wc -l
+ 1447  cat nci.A5.B128.GX0.25.F.gam | ./vg/bin/vg scrub -R - | ./vg/bin/vg view -a - | wc -l
+ 1448  cat nci.A5.B128.GX0.25.F.gam | ./vg/bin/vg scrub -v -R - | ./vg/bin/vg view -a - | wc -l
+ 1449  cat nci.A5.B128.GX0.25.F.gam | ./vg/bin/vg scrub -R - | ./vg/bin/vg view -a - | wc -l
+ 1450  vim vg/src/filter.cpp 
+ 1451  cd vg
+ 1452  make -j 4
+ 1453  cat nci.A5.B128.GX0.25.F.gam | ./vg/bin/vg scrub -R - | ./vg/bin/vg view -a - | wc -l
+ 1454  cd ..
+ 1455  cat nci.A5.B128.GX0.25.F.gam | ./vg/bin/vg scrub -R - | ./vg/bin/vg view -a - | wc -l
+ 1456  cat nci.A5.B128.GX0.25.F.gam | ./vg/bin/vg scrub -v -R - | ./vg/bin/vg view -a - | wc -l
+ 1457  vim vg/src/main.cpp 
+ 1458  vim vg/src/filter.cpp 
+ 1459  cd vg
+ 1460  make
+ 1461  cd ..
+ 1462  cat nci.A5.B128.GX0.25.F.gam | ./vg/bin/vg scrub -v -R - | ./vg/bin/vg view -a - | wc -l
+ 1463  cat nci.A5.B128.GX0.25.F.gam | ./vg/bin/vg scrub -R - | ./vg/bin/vg view -a - | wc -l
+ 1464  cat nci.A5.B128.GX0.25.F.gam | ./vg/bin/vg scrub - | ./vg/bin/vg view -a - | wc -l
+ 1465  cat nci.A5.B128.GX0.25.F.gam | ./vg/bin/vg scrub -v -R - | ./vg/bin/vg view -a - | wc -l
+ 1466  vim vg/src/filter.cpp 
+ 1467  cd vg
+ 1468  make
+ 1469  cd ..
+ 1470  cat nci.A5.B128.GX0.25.F.gam | ./vg/bin/vg scrub -v -R - | ./vg/bin/vg view -a - | wc -l
+ 1471  cat nci.A5.B128.GX0.25.F.gam | ./vg/bin/vg scrub -R - | ./vg/bin/vg view -a - | wc -l
+ 1472  cat nci.A5.B128.GX0.25.F.gam | ./vg/bin/vg scrub -P - | ./vg/bin/vg view -a - | wc -l
+ 1473  ./vg/bin/vg scrub
+ 1474  cat nci.A5.B128.GX0.25.F.gam | ./vg/bin/vg scrub -S 10 - | ./vg/bin/vg view -a - | wc -l
+ 1475  cat nci.A5.B128.GX0.25.F.gam | ./vg/bin/vg scrub -v -S 10 - | ./vg/bin/vg view -a - | wc -l
+ 1476  vim vg/src/filter.cpp 
+ 1477  vim vg/src/main.cpp 
+ 1478  htop
+ 1479  tmux attach -t 1
+ 1480  tmux attach
+ 1481  ls
+ 1482  cat nci.A5.B128.GX0.25.F.gam | ./vg/bin/vg scrub -d 0 - | ./vg/bin/vg view -a - | wc -l
+ 1483  vim vg/src/main.cpp 
+ 1484  vim vg/src/filter.cpp 
+ 1485  cd vg
+ 1486  make
+ 1487  cd ..
+ 1488  cat nci.A5.B128.GX0.25.F.gam | ./vg/bin/vg scrub -d 0 - | ./vg/bin/vg view -a - | wc -l
+ 1489  cat nci.A5.B128.GX0.25.F.gam | ./vg/bin/vg scrub -v -d 0 - | ./vg/bin/vg view -a - | wc -l
+ 1490  cat nci.A5.B128.GX0.25.F.gam | ./vg/bin/vg scrub -P - | ./vg/bin/vg view -a - | wc -l
+ 1491  cat nci.A5.B128.GX0.25.F.gam | ./vg/bin/vg scrub -R - | ./vg/bin/vg view -a - | wc -l
+ 1492  cat nci.A5.B128.GX0.25.F.gam | ./vg/bin/vg scrub -R -v - | ./vg/bin/vg view -a - | wc -l
+ 1493  cat nci.A5.B128.GX0.25.F.gam | ./vg/bin/vg view -a - | grep "reverse:true" | wc -l
+ 1494  cat nci.A5.B128.GX0.25.F.gam | ./vg/bin/vg view -a - | head -n 1
+ 1495  cat nci.A5.B128.GX0.25.F.gam | ./vg/bin/vg view -a - | grep "is_reverse"
+ 1496  cat nci.A5.B128.GX0.25.F.gam | ./vg/bin/vg view -a - | grep 'is_reverse": true' | wc -l
+ 1497  cat nci.A5.B128.GX0.25.F.gam | ./vg/bin/vg view -a - | grep -v 'is_reverse": true' | wc -l
+ 1498  cat nci.A5.B128.GX0.25.F.gam | ./vg/bin/vg scrub -P -x ./circular.xg - | ./vg/bin/vg view -a - | wc -l
+ 1499  vim vg/src/main.cpp 
+ 1500  vim vg/src/filter.hpp 
+ 1501  vim vg/src/main.cpp 
+ 1502  cd vg
+ 1503  make
+ 1504  cd ..
+ 1505  vim vg/src/main.cpp 
+ 1506  view vg/src/filter.hpp 
+ 1507  vim vg/src/main.cpp 
+ 1508  cd vg
+ 1509  make
+ 1510  vim vg/src/main.cpp 
+ 1511  cd ..
+ 1512  vim vg/src/main.cpp 
+ 1513  cd ..
+ 1514  cd hpv_minION_analysis/
+ 1515  cd vg; make; cd ..
+ 1516  vim vg/src/main.cpp 
+ 1517  cd vg; make; cd ..
+ 1518  vim vg/src/deconstructor.cpp 
+ 1519  vim vg/src/vg.hpp 
+ 1520  vim vg/src/deconstructor.cpp 
+ 1521  ./vg/bin/vg deconstruct -s circular.vg 
+ 1522  time ./vg/bin/vg deconstruct -s circular.vg 
+ 1523  time ./vg/bin/vg deconstruct
+ 1524  ./vg/bin/vg construct -r ./vg/test/small/x.fa -v ./vg/test/small/x.vcf.gz > small.vg
+ 1525  time ./vg/bin/vg deconstruct -s small.vg
+ 1526  ./vg/bin/vg construct -r ./vg/test/tiny/tiny.fa -v ./vg/test/tiny/tiny.vcf.gz > tiny.vg
+ 1527  time ./vg/bin/vg deconstruct -s tiny.vg
+ 1528  time ./vg/bin/vg deconstruct -s small.vg
+ 1529  tmux
+ 1530  tmux ls
+ 1531  tmux attach -t 0
+ 1532  ls
+ 1533  tmux attach
+ 1534  ll
+ 1535  df
+ 1536  tmux attach
+ 1537  ll
+ 1538  df
+ 1539  tmux atttach
+ 1540  tmux attach
+ 1541  cd vg; source source_me.sh; cd ..
+ 1542  cd hpv_16_pan/
+ 1543  ls
+ 1544  cd training_set/
+ 1545  ls
+ 1546  vim train_hpv16.sh 
+ 1547  vim make_training_set.sh 
+ 1548  ls
+ 1549  cd ..
+ 1550  ls
+ 1551  cd ..
+ 1552  ls
+ 1553  cd HPV_PanGenome/ls
+ 1554  ls
+ 1555  cd HPV_PanGenome/
+ 1556  ls
+ 1557  ls | grep vg | wc -l
+ 1558  ls -a
+ 1559  rm .gcsa*
+ 1560  ls
+ 1561  cd ref/
+ 1562  ls
+ 1563  cd ..
+ 1564  mkdir combi
+ 1565  cp ref/* combi
+ 1566  cp variant/* combi
+ 1567  cd combi
+ 1568  ../../hpv_16_pan/training_set/make_training_set.sh 
+ 1569  vim ../../hpv_16_pan/training_set/make_training_set.sh 
+ 1570  time ../../hpv_16_pan/training_set/make_training_set.sh 
+ 1571  cd ..
+ 1572  cp ../hpv_16_pan/training_set/make_training_set.sh ./split_make_training.sh
+ 1573  vim split_make_training.sh 
+ 1574  mv split_make_training.sh ../scripts/make_pangenome_reads.txt
+ 1575  cd ..
+ 1576  git add vg
+ 1577  git status
+ 1578  ls
+ 1579  rm simp.*
+ 1580  ls
+ 1581  cd HPV_PanGenome/
+ 1582  ls
+ 1583  vim make_hpv_pan_genome.sh 
+ 1584  cd ..
+ 1585  cd scripts/
+ 1586  ls
+ 1587  less sim_ref_reads.sh 
+ 1588  less run_sim.sh 
+ 1589  less sim_ref_reads.sh 
+ 1590  diff sim_ref_reads.sh run_sim.sh 
+ 1591  vim make_pangenome_reads.txt 
+ 1592  mv make_pangenome_reads.txt make_reads.sh
+ 1593  vim make_
+ 1594  vim make_reads.sh 
+ 1595  mkdir old
+ 1596  mv run_sim.sh old/
+ 1597  ls
+ 1598  vim make_pangenome_reads.sh
+ 1599  time ./make_reads.sh ../HPV_PanGenome/ref/Human16_PPH16.gb333031.fa 
+ 1600  vim make_pangenome_reads.sh
+ 1601  vim make_reads.sh 
+ 1602  for i in $( ../HPV_PanGenome/ref/*); do echo $i; done
+ 1603  for i in ../HPV_PanGenome/ref/*; do echo $i; done
+ 1604  for i in ../HPV_PanGenome/ref/*; do echo ./make_reads.sh $i; done
+ 1605  git add make_reads.sh
+ 1606  git commit -m "Add make_reads script for running a single fasta file through the sim pipeline"
+ 1607  git push origin master
+ 1608  ls
+ 1609  less 9.n100.e0.05.i0.10.l7500.reads.Human16_PPH16.gb333031.txt 
+ 1610  rm *gb333031*
+ 1611  ls
+ 1612  vim make_reads.sh 
+ 1613  time ./make_reads.sh ../HPV_PanGenome/ref/Human16_PPH16.gb333031.fa 
+ 1614  ll
+ 1615  less n100.e0.05.i0.10.l7500.reads.Human16_PPH16.gb333031.fq 
+ 1616  for i in `ls | grep ^[0-9]\{0,2\}.`
+ 1617  for i in `ls | grep ^[0-9]\{0,2\}.`; do echo $i; done
+ 1618  for i in `ls | grep ^[0-9]\{0,2\}`; do echo $i; done
+ 1619  for i in `ls | grep "^[0-9]\{0,2\}"`; do echo $i; done
+ 1620  for i in `ls | grep "$[0-9]\{0,2\}"`; do echo $i; done
+ 1621  for i in `ls | grep "[0-9]\{0,2\}"`; do echo $i; done
+ 1622  for i in `ls | grep "^[0-9]\{0,2\}"`; do echo $i; done
+ 1623  rm *Human16*.txt
+ 1624  ll
+ 1625  vim make_reads.sh 
+ 1626  vim make_
+ 1627  vim make_reads.sh 
+ 1628  ./make_reads.sh ../HPV_PanGenome/ref/Human82_.gb6970427.fa 
+ 1629  ls
+ 1630  vim make_reads.sh 
+ 1631  ll
+ 1632  rm Human82*txt
+ 1633  ls
+ 1634  ll
+ 1635  rm Human82*.txt
+ 1636  rm Human82_.*.txt
+ 1637  ll
+ 1638  rm Human82*
+ 1639  rm *Human82*.txt
+ 1640  vim make_reads.sh 
+ 1641  pwd
+ 1642  cd ../HPV_PanGenome/ref/
+ 1643  ls
+ 1644  for i in `ls | grep .fa`; do ../../scripts/make_reads.sh $i; done
+ 1645  vim ../../scripts/make_reads.sh 
+ 1646  for i in `ls | grep .fa`; do ../../scripts/make_reads.sh $i; done
+ 1647  ls
+ 1648  rm *.vg
+ 1649  rm *.fq
+ 1650  ls
+ 1651  rm *.vg
+ 1652  rm *.fai
+ 1653  rm *.xg
+ 1654  rm *.gcsa
+ 1655  ls
+ 1656  rm *.lcp
+ 1657  ls
+ 1658  for i in `ls | grep .fa`; do ../../scripts/make_reads.sh $i; done
+ 1659  vim ../../scripts/make_reads.sh 
+ 1660  rm *.fai
+ 1661  ls
+ 1662  for i in `ls | grep .fa`; do ../../scripts/make_reads.sh $i; done
+ 1663  ls
+ 1664  rm *.vg
+ 1665  rm *.xg
+ 1666  rm *.fq
+ 1667  rm *.gcsa *.lcp
+ 1668  ls
+ 1669  rm *.txt
+ 1670  ls
+ 1671  ls | grep -v fa
+ 1672  mv hpv_all_ref.msh ..
+ 1673  ../../scripts/make_reads.sh Human16_PPH16.gb333031.fa 
+ 1674  for i in `ls | grep .fa`; do ../../scripts/make_reads.sh $i; done
+ 1675  htop
+ 1676  for i in `ls | grep "fa$"`; do echo $i; done
+ 1677  history
+ 1678  for i in `ls | grep ".fa$"`; do ../../scripts/make_reads.sh $i; done
+ 1679  cd ../../
+ 1680  ls
+ 1681  cd vg
+ 1682  source source_me.sh 
+ 1683  cd ../HPV_PanGenome/ref/
+ 1684  for i in `ls | grep ".fa$"`; do ../../scripts/make_reads.sh $i; done
+ 1685  tmux attach
+ 1686  ls
+ 1687  cd sandbox/
+ 1688  ls
+ 1689  cd hpv_
+ 1690  cd hpv_minION_analysis/
+ 1691  ls
+ 1692  git staus
+ 1693  git status
+ 1694  git add scripts/remove_numbers.sh 
+ 1695  git status
+ 1696  git add vg
+ 1697  git add scripts/
+ 1698  git status
+ 1699  git rm scripts/*lcp
+ 1700  git rm -f scripts/*lcp
+ 1701  git rm -f scripts/*xg
+ 1702  git rm -f scripts/*gcsa
+ 1703  git add hpv_16_pan/training_set/mash_classify.sh 
+ 1704  git add hpv_16_pan/training_set/train_hpv16.sh 
+ 1705  ls
+ 1706  git push origin master
+ 1707  git commit -m "Housekeeping; added a bunch of scripts for MinHash exploration."
+ 1708  git push origin master
+ 1709  git rm -f scripts/hpv_1.vg 
+ 1710  git rm -f scripts/hpv_16.vg 
+ 1711  git rm -f scripts/hpv_2.vg 
+ 1712  git rm --cached scripts/
+ 1713  git rm --cached scripts/x.dat 
+ 1714  git commit -m "Cleanup
+ 1715  "
+ 1716  git push origin master
+ 1717  tmux attach
+ 1718  htop
+ 1719  ls
+ 1720  tmux attach
+ 1721  df
+ 1722  cd sandbox/hpv_minION_analysis/
+ 1723  ls
+ 1724  ll
+ 1725  cd HPV_PanGenome/
+ 1726  ll
+ 1727  cd ref/
+ 1728  ll
+ 1729  ls | wc -l
+ 1730  ls | grep fq | wc -l
+ 1731  ls | grep fa | wc -l
+ 1732  ls | grep Human | wc -l
+ 1733  ls | grep fa.fai | wc -l
+ 1734  ls | grep fq | less
+ 1735  tmux attach
+ 1736  tmux kill
+ 1737  tmux kill-pane
+ 1738  tmux ls
+ 1739  tmux kill-window
+ 1740  tmux ls
+ 1741  htop
+ 1742  rm *txt
+ 1743  ls | grep "fq$"
+ 1744  ls | grep "fai.fq$"
+ 1745  rm `ls | grep "fai.fq$"`
+ 1746  ll
+ 1747  ls | grep fai
+ 1748  rm *.fai
+ 1749  rm *.vg
+ 1750  rm *.xg
+ 1751  rm *.gcsa *.lcp
+ 1752  ls
+ 1753  ls | grep fq
+ 1754  ls | grep fq | wc -l
+ 1755  ls
+ 1756  ls | grep fa | wc -l
+ 1757  rm *.fq
+ 1758  tmux
+ 1759  tmux kill-window
+ 1760  git status
+ 1761  lll
+ 1762  ll
+ 1763  rm *.txt
+ 1764  ls
+ 1765  rm *.vg
+ 1766  rm *.fq
+ 1767  ls
+ 1768  rm *.lcp *.fai *.xg *.gcsa
+ 1769  ls
+ 1770  git sttaus
+ 1771  git status
+ 1772  rm .vg-kmers-tmp-XX*
+ 1773  git status
+ 1774  rm .gcsa_friga_*
+ 1775  ls
+ 1776  git status
+ 1777  git add Human41_.gb60942.fa 
+ 1778  git add ../shuf.py 
+ 1779  git add ../hpv_all_ref.msh 
+ 1780  git add ../make_hpv_pan_genome.sh 
+ 1781  time ../../scripts/make_reads.sh Genitaltype_.gb60955.fa 
+ 1782  cd ../../vg/ && source source_me.sh
+ 1783  cd ../HPV_PanGenome/ref/
+ 1784  time ../../scripts/make_reads.sh Genitaltype_.gb60955.fa 
+ 1785  rm *.vg *.xg *.lcp *.gcsa *.fai
+ 1786  for i in `ls | grep "[0-9].fa$"`; do echo $i; done
+ 1787  for i in `ls | grep "[0-9].fa$"`; do time ../../scripts/make_reads.sh $i; done
+ 1788  rm *.vg *.xg *.lcp *.gcsa *.fai
+ 1789  ll | wc -l
+ 1790  ls
+ 1791  rm *.txt
+ 1792  ll | wc -l
+ 1793  ll
+ 1794  rm *.fq
+ 1795  git status
+ 1796  git commit -m "Updates to scripts and data cleanup"
+ 1797  git push origin master
+ 1798  git pull
+ 1799  git pull origin master
+ 1800  git push origin master
+ 1801  git commit -m "Merged"
+ 1802  git status
+ 1803  git checkout master
+ 1804  git branch tmp
+ 1805  git log
+ 1806  git checkout 2f1ec
+ 1807  git branch tmp
+ 1808  git branch
+ 1809  git branch rm tmp
+ 1810  git branch
+ 1811  git branch -h
+ 1812  git branch -d rm
+ 1813  git branch -d tmp
+ 1814  git branch tmp
+ 1815  git status
+ 1816  git commit -m ""
+ 1817  git merge tmp
+ 1818  git merge tmp HEAD
+ 1819  git checkout tmp
+ 1820  git checkout master
+ 1821  git merge master tmp
+ 1822  git pull origin master
+ 1823  git status
+ 1824  git push origin master
+ 1825  history
+ 1826  less ../../scripts/make_reads.sh 
+ 1827  sudo shutdown
+ 1828  sudo shutdown -n
+ 1829  sudo shutdown now
+ 1830  killall spotify
+ 1831  cd sandbox/
+ 1832  ls
+ 1833  cd ..
+ 1834  ls
+ 1835  cd te
+ 1836  cd technica/
+ 1837  ls
+ 1838  cd ..
+ 1839  ls
+ 1840  cd sandbox/
+ 1841  ls
+ 1842  cd ..
+ 1843  ls
+ 1844  cd bioinformatica/
+ 1845  ls
+ 1846  cd ..
+ 1847  ls
+ 1848  cd tensorflow/
+ 1849  ls
+ 1850  df
+ 1851  mount
+ 1852  fdisk
+ 1853  df
+ 1854  mount
+ 1855  mount -a
+ 1856  sudo mount -a
+ 1857  mount
+ 1858  sudo fdisk -l
+ 1859  sudo fdisk -l /dev/sdb
+ 1860  parted /dev/sdb
+ 1861  sudo parted /dev/sdb
+ 1862  mkfs.ext4 /dev/sdb1
+ 1863  sudo mkfs.ext4 /dev/sdb1
+ 1864  sudo mkfs.ext4 /dev/sdb
+ 1865  df -H
+ 1866  df
+ 1867  mount
+ 1868  sudo parted /dev/sdb
+ 1869  mkfs.ext4 /dev/sdb1
+ 1870  sudo mkfs.ext4 /dev/sdb1
+ 1871  mkdir /elysium
+ 1872  sudo mkdir /elysium
+ 1873  mount /dev/sdb1 /elysium
+ 1874  sudo mount /dev/sdb1 /elysium
+ 1875  df -H
+ 1876  vim /etc/fstab
+ 1877  suvim /etc/fstab
+ 1878  sudoedit /etc/fstab
+ 1879  sudo mount -a 
+ 1880  cd /elysium/
+ 1881  ls
+ 1882  cdh
+ 1883  df -H
+ 1884  cd Downloads/
+ 1885  ls
+ 1886  ll
+ 1887  mv cud* /elysium/
+ 1888  cde
+ 1889  cd /elysium/
+ 1890  touch file.txt
+ 1891  mount -a
+ 1892  sudoedit /etc/fstab
+ 1893  sudo mount -a
+ 1894  touch file.txt
+ 1895  exit
+ 1896  cde
+ 1897  touch file.xt
+ 1898  chmod 777 /dev/sdb1
+ 1899  sudo chmod 777 /dev/sdb1
+ 1900  touch file.txt
+ 1901  sudo chmod 777 /elysium/
+ 1902  touch file.txt
+ 1903  ls
+ 1904  rm file.txt 
+ 1905  cdh
+ 1906  cd Downloads/
+ 1907  mv cud* /elysium/
+ 1908  cde
+ 1909  ls
+ 1910  sudo dpkg -i /elysium/cuda-repo-ubuntu1404-7-5-local_7.5-18_amd64.deb 
+ 1911  tar xvzf cudnn-7.0-linux-x64-v4.0-prod.tgz 
+ 1912  ls
+ 1913  cd cuda/
+ 1914  ls
+ 1915  cd include/
+ 1916  ls
+ 1917  cd ../lib64/
+ 1918  ls
+ 1919  cd ..
+ 1920  ls
+ 1921  cd ..
+ 1922  ls
+ 1923  cd cuda/
+ 1924  ls
+ 1925  cd ..
+ 1926  ls
+ 1927  chmod 777 cuda_7.5.18_linux.run 
+ 1928  sudo sh cuda_8.5.18_linux.run
+ 1929  sudo sh ./cuda_8.5.18_linux.run
+ 1930  ls
+ 1931  ./cuda_7.5.18_linux.run 
+ 1932  sudo ./cuda_7.5.18_linux.run 
+ 1933  sudo apt-get update
+ 1934  sudo apt-get install cuda
+ 1935  vim .bashrc
+ 1936  pagekite.py 
+ 1937  cd Downloads/
+ 1938  ll
+ 1939  cd /elysium/
+ 1940  ls
+ 1941  cdh
+ 1942  vim .bashrc
+ 1943  source .bashrc 
+ 1944  cde
+ 1945  ls
+ 1946  cdh
+ 1947  sudo apt-get purge nvidia
+ 1948  sudo apt-get purge nvidia-352
+ 1949  sudo mv /etc/X11/xorg.conf /etc/X11/xorg.conf.bak~
+ 1950  sudo update-initramfs -u
+ 1951  sudo apt-get install nvidia-352-updates
+ 1952  sudo reboot
+ 1953  sudo apt-get purge nvidia-352
+ 1954  sudo apt-get purge nvidia-352-updates 
+ 1955  cde
+ 1956  ls
+ 1957  sudo ./cuda_7.5.18_linux.run 
+ 1958  sudo sevice lightdm stop
+ 1959  sudo service lightdm stop
+ 1960  sudo killall Xorg
+ 1961  sudo ./cuda_7.5.18_linux.run 
+ 1962  sudo ./cuda_7.5.18_linux.run -toolkit -samples -silent -override
+ 1963  nvidia-modprobe 
+ 1964  sudo reboot
+ 1965  killall Xorg
+ 1966  sudo killall Xorg
+ 1967  sudo service lightdm stop
+ 1968  cde
+ 1969  sudo ./cuda_7.5.18_linux.run -toolkit -samples -override
+ 1970  sudo ./cuda_7.5.18_linux.run -toolkit -samples -override -silent
+ 1971  cdh
+ 1972  ls
+ 1973  cd NVIDIA_CUDA-7.5_Samples/
+ 1974  ls
+ 1975  cd 0_Simple/
+ 1976  ls
+ 1977  cd ..
+ 1978  ls
+ 1979  cd common/
+ 1980  ls
+ 1981  cd ../1_Utilities/
+ 1982  ls
+ 1983  cd deviceQuery
+ 1984  ;s
+ 1985  ls
+ 1986  make
+ 1987  ls
+ 1988  ./deviceQuery 
+ 1989  sudo service lightdm start
+ 1990  cde
+ 1991  ls
+ 1992  cd cuda/
+ 1993  ls
+ 1994  cp include/cudnn.h /usr/local/cuda-7.5/include/
+ 1995  sudo cp include/cudnn.h /usr/local/cuda-7.5/include/
+ 1996  sudo cp lib64/libcudnn.so /usr/local/cuda-7.5/lib64/
+ 1997  sudo reboot
+ 1998  cde
+ 1999  ls
+ 2000  ls /usr/local/cuda-7.5/lib62
+ 2001  ls /usr/local/cuda-7.5/lib64/
+ 2002  cdh
+ 2003  cde
+ 2004  ls
+ 2005  cd caffe/
+ 2006  ls
+ 2007  cd examples/
+ 2008  ls
+ 2009  cd mnist/
+ 2010  ls
+ 2011  view convert_mnist_data.cpp 
+ 2012  ls
+ 2013  cdh
+ 2014  ls
+ 2015  cd sandbox/
+ 2016  ls
+ 2017  cd hpv_
+ 2018  cd hpv_minION_analysis/
+ 2019  ls
+ 2020  git pull
+ 2021  cd HPV_PanGenome/
+ 2022  ls
+ 2023  git pull
+ 2024  ls
+ 2025  cd ../vg
+ 2026  git pull
+ 2027  git status
+ 2028  cd ..
+ 2029  ls
+ 2030  less HPV_PanGenome/close5s_sorted.txt 
+ 2031  less -S HPV_PanGenome/close5s_sorted.txt 
+ 2032  cd HPV_PanGenome/
+ 2033  ls
+ 2034  cd combi/m
+ 2035  cd combi/
+ 2036  ls
+ 2037  rm *.vg *.lcp *.xg *.fai
+ 2038  rm *.txt
+ 2039  ls
+ 2040  rm *.gcsa
+ 2041  for i in `ls | grep ".fa$"`; do ~/sandbox/Mash/mash dist hpv_all_ref.msh $i | sort -n -r -k3 | head -n 20 >> hpv_close20_preclust.txt; done
+ 2042  ~/sandbox/Mash/mash dist hpv_all_ref.msh Human16_.gb33330936.fa 
+ 2043  ~/sandbox/Mash/mash dist hpv_all_ref.msh Human16_.gb33330936.fa | sort -n -r -k3
+ 2044  rm hpv_all_ref.msh 
+ 2045  ~/sandbox/Mash/mash sketch -k 21 -s8000 -o hpv_all_combi.msh *.fa
+ 2046  ~/sandbox/Mash/mash sketch -k 21 -s 8000 -o hpv_all_combi.msh *.fa
+ 2047  ~/sandbox/Mash/mash dist hpv_all_ref.msh Human16_.gb33330936.fa | sort -n -r -k3
+ 2048  ~/sandbox/Mash/mash dist hpv_all_combi.msh Human16_.gb33330936.fa | sort -n -r -k3
+ 2049  ~/sandbox/Mash/mash dist -m 4 hpv_all_combi.msh Human16_.gb33330936.fa | sort -n -r -k3
+ 2050  ~/sandbox/Mash/mash 
+ 2051  ~/sandbox/Mash/mash dist
+ 2052  ~/sandbox/Mash/mash sketch -k 18 -s 8000 -o hpv_all_combi.msh *.fa
+ 2053  ~/sandbox/Mash/mash dist  hpv_all_combi.msh Human16_.gb33330936.fa | sort -n -r -k3
+ 2054  ~/sandbox/Mash/mash sketch -k 16 -s 10000 -o hpv_all_combi.msh *.fa
+ 2055  ~/sandbox/Mash/mash dist  hpv_all_combi.msh Human16_.gb33330936.fa | sort -n -r -k3
+ 2056  ~/sandbox/Mash/mash sketch -k 16 -s 7000 -o hpv_all_combi.msh *.fa
+ 2057  ~/sandbox/Mash/mash dist  hpv_all_combi.msh Human16_.gb33330936.fa | sort -n -r -k3
+ 2058  for i in `ls | grep ".fa$"`; do ~/sandbox/Mash/mash dist hpv_all_ref.msh $i | sort -n -r -k3 | head -n 20 >> hpv_close20_preclust_s7000_k16.txt; done
+ 2059  for i in `ls | grep ".fa$"`; do ~/sandbox/Mash/mash dist hpv_all_combi.msh $i | sort -n -r -k3 | head -n 20 >> hpv_close20_preclust_s7000_k16.txt; done
+ 2060  vim preclustered_msga.py
+ 2061  python preclustered_msga.py 
+ 2062  vim preclustered_msga.py
+ 2063  python preclustered_msga.py 
+ 2064  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt 
+ 2065  ls
+ 2066  vim preclustered_msga.py
+ 2067  less hpv_close20_preclust_s7000_k16.txt 
+ 2068  for i in `ls | grep ".fa$"`; do ~/sandbox/Mash/mash dist hpv_all_combi.msh $i | sort -n -r -k3 | tail -n 20 >> hpv_close20_preclust_s7000_k16.txt; done
+ 2069  less hpv_close20_preclust_s7000_k16.txt 
+ 2070  for i in `ls | grep ".fa$"`; do ~/sandbox/Mash/mash dist hpv_all_combi.msh $i | sort -n -r -k3 | head -n 5; break; done
+ 2071  for i in `ls | grep ".fa$"`; do ~/sandbox/Mash/mash dist hpv_all_combi.msh $i | sort -n  -k3 | head -n 5; break; done
+ 2072  for i in `ls | grep ".fa$"`; do ~/sandbox/Mash/mash dist hpv_all_combi.msh $i | sort -n -k3 | head -n 20; break; done
+ 2073  rm hpv_close20_preclust*
+ 2074  for i in `ls | grep ".fa$"`; do ~/sandbox/Mash/mash dist hpv_all_combi.msh $i | sort -n -k3 | head -n 20 >> hpv_close20_preclust_s7000_k16.txt; done
+ 2075  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt 
+ 2076  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 1
+ 2077  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 1.0
+ 2078  vim preclustered_msga.py 
+ 2079  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 1.0
+ 2080  vim preclustered_msga.py 
+ 2081  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 1.0
+ 2082  vim preclustered_msga.py 
+ 2083  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 1.0
+ 2084  vim preclustered_msga.py 
+ 2085  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 1.0
+ 2086  vim preclustered_msga.py 
+ 2087  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 1.0
+ 2088  vim preclustered_msga.py 
+ 2089  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 1.0
+ 2090  vim preclustered_msga.py 
+ 2091  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 1.0
+ 2092  vim preclustered_msga.py 
+ 2093  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 1.0
+ 2094  vim preclustered_msga.py 
+ 2095  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 1.0
+ 2096  vim preclustered_msga.py 
+ 2097  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 1.0
+ 2098  vim preclustered_msga.py 
+ 2099  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 1.0
+ 2100  vim preclustered_msga.py 
+ 2101  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 1.0
+ 2102  vim preclustered_msga.py 
+ 2103  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 1.0
+ 2104  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 0.1
+ 2105  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 0.001
+ 2106  vim preclustered_msga.py 
+ 2107  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 0.001
+ 2108  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 0.1
+ 2109  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 0.1 | wc -l
+ 2110  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 0.2 | wc -l
+ 2111  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 1.0 | wc -l
+ 2112  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 0.00000001 | wc -l
+ 2113  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 0.000000000001 | wc -l
+ 2114  ls
+ 2115  cp ../ref/* .
+ 2116  cp ../variant/* .
+ 2117  ls
+ 2118  ls | grep ".fa$" | wc -l
+ 2119  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 0.000000000001 | wc -l
+ 2120  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 0.01 | wc -l
+ 2121  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 0.005 | wc -l
+ 2122  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 0.02 | wc -l
+ 2123  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 0.2 | wc -l
+ 2124  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 0.1 | wc -l
+ 2125  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 0.05 | wc -l
+ 2126  vim preclustered_msga.py 
+ 2127  ~/sandbox/vg/bin/vg
+ 2128  ~/sandbox/vg/bin/vg msga
+ 2129  view ../../HPV_PanGenome/make_hpv_pan_genome.sh 
+ 2130  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 0.05 | wc -l
+ 2131  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 0.05
+ 2132  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 0.001
+ 2133  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 0.09 | wc -l
+ 2134  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 0.1 | wc -l
+ 2135  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 0.2 | wc -l
+ 2136  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 0.0001 | wc -l
+ 2137  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 0.0001
+ 2138  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 0.1 | wc -l
+ 2139  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 0.00001 | wc -l
+ 2140  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 0.5 | wc -l
+ 2141  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 0.5
+ 2142  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 0.00000005
+ 2143  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 0.00000005 | grep 16_
+ 2144  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 0.01 | grep 16_
+ 2145  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 1/0 | grep 16_
+ 2146  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 1.0 | grep 16_
+ 2147  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 0.2 | grep 16_
+ 2148  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 0.2 | grep 18_
+ 2149  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 0.05 | grep 18_
+ 2150  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 0.02 | grep 18_
+ 2151  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 0.07 | grep 18_
+ 2152  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 0.1 | grep 18_
+ 2153  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 0.2 | grep 18_
+ 2154  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 0.3 | grep 18_
+ 2155  cat hpv_close20_preclust_s7000_k16.txt | grep 18_
+ 2156* cat hpv_close20_preclust_s7000_k16.txt | grep 18_ |
+ 2157  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 0.02 | grep 18_
+ 2158  cat hpv_close20_preclust_s7000_k16.txt | grep 18_ | sort -n -k3 | less
+ 2159  cat hpv_close20_preclust_s7000_k16.txt | grep 18_ | sort -n -k3 | 
+ 2160  cat hpv_close20_preclust_s7000_k16.txt | grep 18_ | sort -n -k3
+ 2161  cat hpv_close20_preclust_s7000_k16.txt | grep 18_ | sort -n -k3 | grep 18_
+ 2162  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 0.02 | grep 18_
+ 2163  cat hpv_close20_preclust_s7000_k16.txt | grep 18_ | sort -n -k3 | grep Human118_.gb256807731
+ 2164  cat hpv_close20_preclust_s7000_k16.txt | grep 18_ | sort -n -k3 | grep 18_
+ 2165  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 0.02 | grep 18_
+ 2166  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 0.02 | grep 16_
+ 2167  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 0.02
+ 2168  ~/sandbox/hpv_minION_analysis/vg/bin/vg msga -t 4 -K 16 -B 256 -GS .75 -D -f <(cat Humancomplete_HPU85660.gb2218078.fa ) > msga_Humancomplete_HPU85660.gb2218078.fa.vg
+ 2169  ~/sandbox/hpv_minION_analysis/vg/bin/vg msga -t 4 -K 16 -B 256 -GS .75 -D -f $(cat Humancomplete_HPU85660.gb2218078.fa ) > msga_Humancomplete_HPU85660.gb2218078.fa.vg
+ 2170  ~/sandbox/hpv_minION_analysis/vg/bin/vg msga -t 4 -K 16 -B 256 -GS .75 -D -f <(cat Humancomplete_HPU85660.gb2218078.fa ) > msga_Humancomplete_HPU85660.gb2218078.fa.vg
+ 2171  ~/sandbox/hpv_minION_analysis/vg/bin/vg msga -t 4 -K 16 -B 256 -GS .75 -D -f Humancomplete_HPU85660.gb2218078.fa > msga_Humancomplete_HPU85660.gb2218078.fa.vg
+ 2172  view ~/sandbox/hpv_minION_analysis/vg/src/main.cpp 
+ 2173  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 0.02 | grep 16_
+ 2174  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 0.02
+ 2175  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 0.02 | grep 16_
+ 2176  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 0.02 
+ 2177  less hpv_close20_preclust_s7000_k16.txt 
+ 2178  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 0.02 
+ 2179  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 0.2 
+ 2180  ~/sandbox/hpv_minION_analysis/vg/bin/vg msga -t 4 -K 16 -B 256 -GS .75 -D -f -f Humancomplete_HPU85660.gb2218078.fa -f Human12_.gb396910.fa -f Human105_.gb238623458.fa -f Human8_PPH8CG.gb333074.fa -f Human143_.gb343411577.fa -f Human36_HPU31785.gb1020218.fa -f Human99_.gb238623435.fa -f Human5_PPH5CG.gb333071.fa -f Human47_PPH47CG.gb333062.fa  > msga_Humancomplete_HPU85660.gb2218078.fa_Human12_.gb396910.fa_Human105_.gb238623458.fa_Human8_PPH8CG.gb333074.fa_Human143_.gb343411577.fa_Human36_HPU31785.gb1020218.fa_Human99_.gb238623435.fa_Human5_PPH5CG.gb333071.fa_Human47_PPH47CG.gb333062.fa.vg
+ 2181  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 0.2 
+ 2182  ~/sandbox/hpv_minION_analysis/vg/bin/vg msga -t 4 -K 16 -B 256 -GS .75 -D -f Humancomplete_HPU85660.gb2218078.fa -f Human12_.gb396910.fa -f Human105_.gb238623458.fa -f Human8_PPH8CG.gb333074.fa -f Human143_.gb343411577.fa -f Human36_HPU31785.gb1020218.fa -f Human99_.gb238623435.fa -f Human5_PPH5CG.gb333071.fa -f Human47_PPH47CG.gb333062.fa  > msga_Humancomplete_HPU85660.gb2218078.fa_Human12_.gb396910.fa_Human105_.gb238623458.fa_Human8_PPH8CG.gb333074.fa_Human143_.gb343411577.fa_Human36_HPU31785.gb1020218.fa_Human99_.gb238623435.fa_Human5_PPH5CG.gb333071.fa_Human47_PPH47CG.gb333062.fa.vg
+ 2183* 
+ 2184  ls
+ 2185  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 0.2 
+ 2186  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 0.2 ~/sandbox/hpv_minION_analysis/vg/bin/vg msga -t 4 -K 16 -B 256 -GS .75 -D -C -f Humancomplete_HPU85660.gb2218078.fa -f Human12_.gb396910.fa -f Human105_.gb238623458.fa -f Human8_PPH8CG.gb333074.fa -f Human143_.gb343411577.fa -f Human36_HPU31785.gb1020218.fa -f Human99_.gb238623435.fa -f Human5_PPH5CG.gb333071.fa -f Human47_PPH47CG.gb333062.fa  > msga_Humancomplete_HPU85660.gb2218078.fa_Human12_.gb396910.fa_Human105_.gb238623458.fa_Human8_PPH8CG.gb333074.fa_Human143_.gb343411577.fa_Human36_HPU31785.gb1020218.fa_Human99_.gb238623435.fa_Human5_PPH5CG.gb333071.fa_Human47_PPH47CG.gb333062.fa.vg
+ 2187  ~/sandbox/hpv_minION_analysis/vg/bin/vg msga -t 4 -K 16 -B 256 -GS .75 -D -C -f Humancomplete_HPU85660.gb2218078.fa -f Human12_.gb396910.fa -f Human105_.gb238623458.fa -f Human8_PPH8CG.gb333074.fa -f Human143_.gb343411577.fa -f Human36_HPU31785.gb1020218.fa -f Human99_.gb238623435.fa -f Human5_PPH5CG.gb333071.fa -f Human47_PPH47CG.gb333062.fa  > msga_Humancomplete_HPU85660.gb2218078.fa_Human12_.gb396910.fa_Human105_.gb238623458.fa_Human8_PPH8CG.gb333074.fa_Human143_.gb343411577.fa_Human36_HPU31785.gb1020218.fa_Human99_.gb238623435.fa_Human5_PPH5CG.gb333071.fa_Human47_PPH47CG.gb333062.fa.vg
+ 2188  rm *.fai *.lcp *.gcsa *.vg *.xg
+ 2189  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 0.2 
+ 2190  rm *.fai *.lcp *.gcsa *.vg *.xg
+ 2191  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 0.03 
+ 2192  cat *.vg > pan_hpv.vg
+ 2193  ~/sandbox/hpv_minION_analysis/vg/bin/vg index -x pan_hpv.xg -g pan_hpv.gcsa -k 16 pan_hpv.vg 
+ 2194  ../../vg/bin/vg ids
+ 2195  rm pan_hpv.*
+ 2196* 
+ 2197  ~/sandbox/hpv_minION_analysis/vg/bin/vg index -x pan_hpv.xg -g pan_hpv.gcsa -k 16 pan_hpv.vg 
+ 2198  ll
+ 2199  ../../vg/bin/vg stats pan_hpv.vg
+ 2200  ../../vg/bin/vg stats -s pan_hpv.vg
+ 2201  ../../vg/bin/vg stats -l pan_hpv.vg
+ 2202  ../../vg/bin/vg stats
+ 2203  ../../vg/bin/vg -z stats
+ 2204  ../../vg/bin/vg stats -z pan_hpv.vg
+ 2205  rm *.fai *.lcp *.gcsa *.vg *.xg
+ 2206  python preclustered_msga.py --infile hpv_close20_preclust_s7000_k16.txt -d 0.03 
+ 2207  ls
+ 2208  ../../vg/bin/vg ids
+ 2209  ../../vg/bin/vg ids -j *.vg > pan_hpv.vg
+ 2210  ../../vg/bin/vg stats -z pan_hpv.vg
+ 2211  ../../vg/bin/vg stats -l pan_hpv.vg
+ 2212  ll
+ 2213  ../../vg/bin/vg ids
+ 2214  ../../vg/bin/vg stats -l pan_hpv.vg
+ 2215  ll
+ 2216  ls =lrth
+ 2217  ls -lrth
+ 2218  ls
+ 2219  ll
+ 2220  ls | grep pan
+ 2221  ll | grep pan
+ 2222  rm pan_hpv.vg 
+ 2223  ../../vg/bin/vg ids -j *.vg > pan_hpv.vg
+ 2224  ll
+ 2225  ll | grep pan_hpv.vg 
+ 2226  rm pan_hpv.vg 
+ 2227  cat *.fa.vg > pan_hpv.vg
+ 2228  ../../vg/bin/vg stats -l pan_hpv.vg
+ 2229* ../../vg/bin/vg ids -j pan_hpv.vg 
+ 2230  ~/sandbox/hpv_minION_analysis/vg/bin/vg index -x pan_hpv.xg -g pan_hpv.gcsa -k 16 pan_hpv.vg 
+ 2231  ../../vg/bin/vg stats -z pan_hpv.vg
+ 2232  ll
+ 2233  rm pan_hpv.vg 
+ 2234  view ../../vg/src/main.cpp 
+ 2235  ../../vg/bin/vg ids -j *.vg
+ 2236  rm *post_circ*
+ 2237  ls
+ 2238  rm *.fai
+ 2239  ls
+ 2240  ll
+ 2241  rm post-circularize.vg
+ 2242  rm *post-circularize.vg
+ 2243  ../../vg/bin/vg ids -j *.vg
+ 2244  cat *.vg > pan_hpv.vg
+ 2245  ll
+ 2246  ~/sandbox/hpv_minION_analysis/vg/bin/vg index -x pan_hpv.xg -g pan_hpv.gcsa -k 16 pan_hpv.vg 
+ 2247  ~/sandbox/hpv_minION_analysis/vg/bin/vg index -x pan_hpv.xg -g pan_hpv.gcsa -k 12 pan_hpv.vg 
+ 2248  ~/sandbox/hpv_minION_analysis/vg/bin/vg index -x pan_hpv.xg -g pan_hpv.gcsa -k 18 pan_hpv.vg 
+ 2249  ll
+ 2250  ../../vg/bin/vg stats -z pan_hpv.vg
+ 2251  ../../vg/bin/vg stats -zl pan_hpv.vg
+ 2252  ../../vg/bin/vg stats  pan_hpv.vg
+ 2253  ../../vg/bin/vg stats
+ 2254  ../../vg/bin/vg stats -T pan_hpv.vg 
+ 2255  ../../vg/bin/vg stats -s pan_hpv.vg 
+ 2256  ../../vg/bin/vg stats H pan_hpv.vg 
+ 2257  ../../vg/bin/vg stats -H pan_hpv.vg 
+ 2258  ../../vg/bin/vg stats -c pan_hpv.vg 
+ 2259  ../../vg/bin/vg stats -z pan_hpv.vg 
+ 2260  ../../vg/bin/vg mod
+ 2261  ../../vg/bin/vg mod -n pan_hpv.vg 
+ 2262  ../../vg/bin/vg mod -n pan_hpv.vg > pan_hpv_normed.vg
+ 2263  ../../vg/bin/vg stats -z pan_hpv_normed.vg
+ 2264  ../../vg/bin/vg stats -zl pan_hpv_normed.vg
+ 2265  ~/sandbox/hpv_minION_analysis/vg/bin/vg index -x pan_hpv_normed.xg -g pan_hpv_normed.gcsa -k 18 pan_hpv_normed.vg 
+ 2266  gdb -ex "r  ~/sandbox/hpv_minION_analysis/vg/bin/vg index -x pan_hpv_normed.xg -g pan_hpv_normed.gcsa -k 18 pan_hpv_normed.vg"
+ 2267  gdb -ex "r ~/sandbox/hpv_minION_analysis/vg/bin/vg index -x pan_hpv_normed.xg -g pan_hpv_normed.gcsa -k 18 pan_hpv_normed.vg"
+ 2268  gdb ex "r ~/sandbox/hpv_minION_analysis/vg/bin/vg index -x pan_hpv_normed.xg -g pan_hpv_normed.gcsa -k 18 pan_hpv_normed.vg"
+ 2269  gdb  "r ~/sandbox/hpv_minION_analysis/vg/bin/vg index -x pan_hpv_normed.xg -g pan_hpv_normed.gcsa -k 18 pan_hpv_normed.vg"
+ 2270  gdb  r "~/sandbox/hpv_minION_analysis/vg/bin/vg index -x pan_hpv_normed.xg -g pan_hpv_normed.gcsa -k 18 pan_hpv_normed.vg"
+ 2271  gdb  "~/sandbox/hpv_minION_analysis/vg/bin/vg index -x pan_hpv_normed.xg -g pan_hpv_normed.gcsa -k 18 pan_hpv_normed.vg"
+ 2272  gdb  ex "r ~/sandbox/hpv_minION_analysis/vg/bin/vg index -x pan_hpv_normed.xg -g pan_hpv_normed.gcsa -k 18 pan_hpv_normed.vg"
+ 2273  gdb  ~/sandbox/hpv_minION_analysis/vg/bin/vg
+ 2274  view ../../vg/src/main.cpp 
+ 2275  ~/sandbox/hpv_minION_analysis/vg/bin/vg index -x pan_hpv_normed.xg -g pan_hpv_normed.gcsa pan_hpv_normed.vg 
+ 2276  ~/sandbox/hpv_minION_analysis/vg/bin/vg index -k 16 -x pan_hpv_normed.xg -g pan_hpv_normed.gcsa pan_hpv_normed.vg 
+ 2277  history > commands.txt
