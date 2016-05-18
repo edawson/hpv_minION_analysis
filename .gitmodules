@@ -9,4 +9,7 @@
 	url = https://github.com/edawson/HPV_PanGenome.git
 [submodule "Mash"]
 	path = Mash
-	url = https://github.com/marbl/Mash
+    url = https://github.com/marbl/Mash
+[submodule "LaunChair"]
+	path = LaunChair
+	url = https://github.com/edawson/LaunChair.git
