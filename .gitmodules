@@ -4,9 +4,6 @@
 [submodule "vg"]
 	path = vg
 	url = https://github.com/edawson/vg.git
-[submodule "HPV_PanGenome"]
-	path = 3_HPV_PanGenome
-	url = https://github.com/edawson/HPV_PanGenome.git
 [submodule "Mash"]
 	path = Mash
     url = https://github.com/marbl/Mash
