@@ -50,7 +50,7 @@ To train and test a model:
 
 Now that we have vectors, we can take a subset and train our model on it. We'll use 10% (300 / 3000 vectors) for our training set:  
         
-        cat aln.vecs.txt | shuf | head -n 1000 | vw --oaa 3 --binary --ngram 5 --passes=20 --threads  -f trained.model --cache_file .cache
+        cat aln.vecs.txt | shuf | head -n 1200 | vw --oaa 3 --binary --ngram 5 --passes=20 --threads  -f trained.model --cache_file .cache
 
 And now we can test on our whole dataset and make a confusion matrix to see what they're classified as:  
 
