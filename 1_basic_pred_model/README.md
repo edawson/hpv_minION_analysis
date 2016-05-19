@@ -45,7 +45,8 @@ and vectorize them.
 
 ## Training and testing a learning model on our vectors 
 To train and test a model:  
-`make test_pred.txt`
+
+        make test_pred.txt
 
 Now that we have vectors, we can take a subset and train our model on it. We'll use 10% (300 / 3000 vectors) for our training set:  
         
