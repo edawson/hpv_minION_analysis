@@ -20,6 +20,8 @@ HPV16_subtype_msh_pred.txt: HPV_16.sketch.msh
 
 minions_pred.txt: HPV_pan.sketch.msh HPV_16.sketch.msh test_data
 
+pred_msh.txt
+
 .PHONY: run clean clobber
 
 clean:

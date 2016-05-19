@@ -45,15 +45,16 @@ and vectorize them.
 
 ## Training and testing a learning model on our vectors 
 To train and test a model:  
-`make test_pred.txt`
 
-Now that we have vectors, we can take a subset and train our model on it. We'll use 10% (300 / 3000 vectors) for our training set:
+        make test_pred.txt
 
-    cat aln.vecs.txt | shuf | head -n 1000 | vw --oaa 3 --binary --ngram 5 --passes=20 --threads  -f trained.model --cache_file .cache
+Now that we have vectors, we can take a subset and train our model on it. We'll use 10% (300 / 3000 vectors) for our training set:  
+        
+        cat aln.vecs.txt | shuf | head -n 1200 | vw --oaa 3 --binary --ngram 5 --passes=20 --threads  -f trained.model --cache_file .cache
 
 And now we can test on our whole dataset and make a confusion matrix to see what they're classified as:  
 
-   cat aln.vecs.txt | vw -i trained.model -p /dev/stdout | tee pred.txt | python ../scripts/make_confusion_matrix.py -c mappings.text 
+        cat aln.vecs.txt | vw -i trained.model -p /dev/stdout | tee pred.txt | python ../scripts/make_confusion_matrix.py -c mappings.text 
 
 And we do pretty well:
 
