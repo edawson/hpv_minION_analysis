@@ -54,7 +54,7 @@ Now that we have vectors, we can take a subset and train our model on it. We'll 
 
 And now we can test on our whole dataset and make a confusion matrix to see what they're classified as:  
 
-   cat aln.vecs.txt | vw -i trained.model -p /dev/stdout | tee pred.txt | python ../scripts/make_confusion_matrix.py -c mappings.text 
+        cat aln.vecs.txt | vw -i trained.model -p /dev/stdout | tee pred.txt | python ../scripts/make_confusion_matrix.py -c mappings.text 
 
 And we do pretty well:
 
