@@ -39,6 +39,16 @@ trained.model: train_me.vecs.wabbit train_me.fq train_me.gam $(base_name).circ.x
 test_pred.txt: trained.model train_me.vecs.wabbit train_me.fq train_me.gam $(base_name).circ.xg
 	if [  -e .cache ]; then rm .cache; fi && cat train_me.vecs.wabbit | $(WABBIT) -i trained.model -p /dev/stdout | tee $@ | python ../scripts/make_confusion_matrix.py -c mappings.text
 
+reads.shuf.txt:
+	cat n1000.e0.05.i0.10.l7500.reads.*.fq* | python ../scripts/shuf.py | ../scripts/remove_numbers.sh | python ../scripts/read_to_vw.py > reads.shuf.txt
+
+reads_trained.model: reads.shuf.txt
+	head -n 1000 reads.shuf.txt | ../bin/vw --oaa 3 --binary --ngram 500 --passes=400 --threads  -f reads_trained.model --cache_file .cache && rm .cache
+
+test_reads.txt: reads_trained.model
+	cat reads.shuf.txt | ../bin/vw -i reads_trained.model -p /dev/stdout | tee $@ | python ../scripts/make_confusion_matrix.py --classes mappings.text	
+
+
 .PHONY: run clean clobber
 
 clean:
