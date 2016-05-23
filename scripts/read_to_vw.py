@@ -12,15 +12,23 @@ class Rec:
         return "%s 1.0 \'%s | vectorspace %s" % (self.label, self.iden, self.seq)
 
 if __name__ == "__main__":
-    count = 0
+    count = 1
     rec = None
     for line in sys.stdin:
-        if line.starts_with(">"):
-            if line.strip() in g_key_to_label:
-                if rec is not None:
-                    print rec.to_str()
-                rec = Rec()
-                rec.label = g_key_to_label
-                rec.iden = "_".join([line.strip().split(" ")])
-            elif line.starts_with("A") or line.starts_with("C") or line.startswith("T") or line.startswith("G"):
+        if line.startswith("@"):
+            seqlab = line.strip().strip("@")
+            if rec is not None:
+                print rec.to_str()
+            if seqlab not in g_key_to_label:
+                g_key_to_label[seqlab] = count
+                count +=1
+
+            rec = Rec()
+            rec.label = g_key_to_label[seqlab]
+            rec.iden = "_".join(seqlab.split(" "))
+    
+        elif (line.startswith("A") or \
+                    line.startswith("C") or \
+                    line.startswith("T") or \
+                    line.startswith("G")):
                 rec.seq += line.strip()
