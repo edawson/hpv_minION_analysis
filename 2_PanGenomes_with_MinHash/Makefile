@@ -33,10 +33,10 @@ HPV_pan.sketch10000_k18.msh:
 
 minIONs_type_s10000_k18_pred.txt: HPV_pan.sketch10000_k18.msh hpv_minION_reads.fastq
 	for i in 8 10 15 18 ; do \
-		for j in 1000 3000 7000 10000 ; do echo "Sketch size: $${j} and Kmer size: $${i}"; echo ""; ../bin/mash dist -r  HPV_pan.sketch$${j}_k$${i}.msh hpv_minION_reads.fastq | sort -n -k3 | head -n 5 | tee minIONs_type_s$${j}_k$${i}_pred.txt ; echo "" ; done ; done
+		for j in 1000 3000 7000 10000 ; do echo "Sketch size: $${j} and Kmer size: $${i}"; echo ""; time ../bin/mash dist -r  HPV_pan.sketch$${j}_k$${i}.msh hpv_minION_reads.fastq | sort -n -k3 | head -n 20 | tee minIONs_type_s$${j}_k$${i}_pred.txt ; echo "" ; done ; done
 
 minIONs_type_s10000_k18_m40_pred.txt: HPV_pan.sketch10000_k18.msh hpv_minION_reads.fastq
-	for i in 1 2 10 20 40 100; do echo "Minimum kmer occurence: $${i}"; echo ""; ../bin/mash dist -r -m $$i $< hpv_minION_reads.fastq | sort -n -k3 | head -n 5 | tee minIONs_type_s10000_k18_m$$i_pred.txt ; echo "" ; done
+	for i in 1 2 10 20 40 100; do echo "Minimum kmer occurence: $${i}"; echo ""; time ../bin/mash dist -r -m $$i $< hpv_minION_reads.fastq | sort -n -k3 | head -n 5 | tee minIONs_type_s10000_k18_m$$i_pred.txt ; echo "" ; done
 
 minIONs_subtype_s10000_k18_m40_pred.txt: HPV_16.sketch.msh hpv_minION_reads.fastq 
 	for i in 1 2 10 20 40 100; do echo "Minimum kmer occurence: $${i}"; echo ""; ../bin/mash dist -r -m $$i $< hpv_minION_reads.fastq | sort -n -k3 | head -n 5 | tee minIONs_subtype_s10000_k18_m$$i_pred.txt ; echo "" ; done
