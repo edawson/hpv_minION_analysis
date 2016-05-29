@@ -9,6 +9,7 @@ def parse_args():
     parser.add_argument("-c", "--classes", type=str, dest="classfile", required=False, default=None, help="A file with the number-to-class translations, one per line")
     parser.add_argument("-i", "--infile", type=str, dest="infile", required=False, default=None, help="A tab-delimited prediction file with predictions in the first column and labels in the second, one entry per row.")
     parser.add_argument("-n", "--no-keys", action='store_true', dest="noKeys", default=False)
+    parser.add_argument("-t", "--tidy", action='store_true', dest="tidy", default=False)
     return parser.parse_args()
 
 def make_matrix(class_d):
@@ -23,26 +24,37 @@ def make_matrix(class_d):
 
     return ret_d
 
-def mat_to_string(mat, printKeys=True):
+def mat_to_string(mat, printKeys=True, useComma=True):
     ordered_keys = sorted(mat.keys())
+
+    sep = "\t" if not useComma else ","
     ostr = ""
 
     
     if printKeys:
-        ostr = "\t"
+        ostr = "Actual" + sep
         # Header time:
-        ostr += "\t".join(ordered_keys) + "\n"
+        ostr += sep.join(ordered_keys) + "\n"
 
     for key_one in ordered_keys:
         if printKeys:
-            ostr += key_one + "\t"
+            ostr += key_one + sep
         count = 0
         for key_two in ordered_keys:
             ostr += str(mat[key_one][key_two])
             if count < len(ordered_keys) - 1:
-                ostr += "\t"
+                ostr += sep
         ostr += "\n"
     return ostr
+
+def mat_to_tidy(mat):
+    ordered_keys = sorted(mat.keys())
+    # Format:
+    # Actual Call
+    # HPV16 HPV1
+
+    print "Not implemented"
+    return 1
 
 if __name__ == "__main__":
     
