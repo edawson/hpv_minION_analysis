@@ -46,7 +46,7 @@ reads_trained.model: reads.shuf.txt
 	head -n 1000 reads.shuf.txt | ../bin/vw --oaa 3 --binary --ngram 500 --passes=400 --threads  -f reads_trained.model --cache_file .cache && rm .cache
 
 test_reads.txt: reads_trained.model
-	cat reads.shuf.txt | ../bin/vw -i reads_trained.model -p /dev/stdout | tee $@ | python ../scripts/make_confusion_matrix.py --classes mappings.text	
+	cat reads.shuf.txt | ../bin/vw -i reads_trained.model -p /dev/stdout | tee $@ | python ../scripts/make_confusion_matrix.py --classes mappings.text --tidy
 
 
 .PHONY: run clean clobber
