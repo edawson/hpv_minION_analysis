@@ -21,10 +21,7 @@ $(BIN_DIR)/mash: .pre-build $(BIN_DIR)/bin/capnp
 
 $(BIN_DIR)/bin/capnp: .pre-build
 	tar zxf capnproto-c++-0.5.3.tar.gz
-	cd capnproto-c++-0.5.3
-	./configure --prefix=$(CWD)/bin
-	make -j6 check
-	sudo make install
+	cd capnproto-c++-0.5.3 && ./configure --prefix=$(CWD)/bin && make -j6 check && make install
 
 .edit_paths:
 
