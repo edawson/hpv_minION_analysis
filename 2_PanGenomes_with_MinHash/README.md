@@ -36,13 +36,14 @@ vary in their percent identity to the reference; BLAST returns 88% max identity 
 for three others. Your mileage may vary.
 
 I'll just go ahead and spoil the fun now:
-        ../bin/mash dist -r HPV_pan.sketch.msh hpv_minION_reads.fastq | sort -k3 -n | head -n 20
-        Estimated genome size: 1.65117e+07
-        Estimated coverage:    1.158
-        ref/GammapapillomavirusR3a_.gb293596086.fa  hpv_minION_reads.fastq  1   1   0/1000
-        ref/Genitaltype_.gb60955.fa hpv_minION_reads.fastq  1   1   0/1000
-        ref/Human100_.gb238623442.fa    hpv_minION_reads.fastq  1   1   0/1000
-        ref/Human101_.gb71726703.fa hpv_minION_reads.fastq  1   1   0/1000
+
+                ../bin/mash dist -r HPV_pan.sketch.msh hpv_minION_reads.fastq | sort -k3 -n | head -n 20
+                Estimated genome size: 1.65117e+07
+                Estimated coverage:    1.158
+                ref/GammapapillomavirusR3a_.gb293596086.fa  hpv_minION_reads.fastq  1   1   0/1000
+                ref/Genitaltype_.gb60955.fa hpv_minION_reads.fastq  1   1   0/1000
+                ref/Human100_.gb238623442.fa    hpv_minION_reads.fastq  1   1   0/1000
+                ref/Human101_.gb71726703.fa hpv_minION_reads.fastq  1   1   0/1000
 
 Without kmer filtering, the Mash defaults (sketch size 1000, k=21) are insufficient for classifying the minION reads.
 The `-r` option tells Mash that the input data is a read set; the problem with this is that Mash does not yet support
@@ -66,15 +67,15 @@ that might be occurring by chance.
 
 This will run another loop, but will increase the minimum kmer occurrence from 1 to 2, 10, 20, 40 and 100.
 
-        Minimum kmer occurence: 1
+                Minimum kmer occurence: 1
 
-        Estimated genome size: 1.505e+07
-        Estimated coverage:    1.2647
-        ref/Human16_PPH16.gb333031.fa   hpv_minION_reads.fastq  0.41216 2.52907e-10     3/10000
-        ref/Human18_.gb60975.fa hpv_minION_reads.fastq  0.473183        0.00114209      1/10000
-        ref/Human201_.gb870702425.fa    hpv_minION_reads.fastq  0.473183        0.0010599       1/10000
-        ref/Human915_.gb371486228.fa    hpv_minION_reads.fastq  0.473183        0.00104945      1/10000
-        ref/GammapapillomavirusR3a_.gb293596086.fa      hpv_minION_reads.fastq  1       1       0/10000
+                Estimated genome size: 1.505e+07
+                Estimated coverage:    1.2647
+                ref/Human16_PPH16.gb333031.fa   hpv_minION_reads.fastq  0.41216 2.52907e-10     3/10000
+                ref/Human18_.gb60975.fa hpv_minION_reads.fastq  0.473183        0.00114209      1/10000
+                ref/Human201_.gb870702425.fa    hpv_minION_reads.fastq  0.473183        0.0010599       1/10000
+                ref/Human915_.gb371486228.fa    hpv_minION_reads.fastq  0.473183        0.00104945      1/10000
+                ref/GammapapillomavirusR3a_.gb293596086.fa      hpv_minION_reads.fastq  1       1       0/10000
 
         Minimum kmer occurence: 2
 

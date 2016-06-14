@@ -28,25 +28,34 @@ train_me.fq:
 	cat n*.fq | ../scripts/remove_numbers.sh | ../scripts/shuf.py > $@
 
 train_me.gam: train_me.fq $(base_name).circ.vg
-	$(VG) map -t 4 -B 128 -GX .6 -A 2 -x $(base_name).circ.xg -g $(base_name).circ.gcsa -f $< > $@
+	$(VG) map -t 4 -B 128 -L 15 -GX .6 -A 2 -x $(base_name).circ.xg -g $(base_name).circ.gcsa -f $< > $@
 
 train_me.vecs.wabbit: train_me.gam train_me.fq $(base_name).circ.xg
-	$(VG) vectorize -w -a -x $(base_name).circ.xg -M mappings.text $< > $@
+	$(VG) vectorize -w -i -x $(base_name).circ.xg -M mappings.text $< > $@
 	
 trained.model: train_me.vecs.wabbit train_me.fq train_me.gam $(base_name).circ.xg
 	if [-e .cache ]; then rm .cache; fi  && head -n 300 $< | $(WABBIT) --oaa 3 --binary --ngram 5 --passes=20 --threads  -f trained.model --cache_file .cache
 
 test_pred.txt: trained.model train_me.vecs.wabbit train_me.fq train_me.gam $(base_name).circ.xg
-	if [  -e .cache ]; then rm .cache; fi && cat train_me.vecs.wabbit | $(WABBIT) -i trained.model -p /dev/stdout | tee $@ | python ../scripts/make_confusion_matrix.py -c mappings.text
+	if [  -e .cache ]; then rm .cache; fi && cat train_me.vecs.wabbit | $(WABBIT) -i trained.model -p /dev/stdout | tee $@ | python ../scripts/make_confusion_matrix.py -c mappings.text --tidy > test.conf.txt
 
-reads.shuf.txt:
-	cat n1000.e0.05.i0.10.l7500.reads.*.fq* | python ../scripts/shuf.py | ../scripts/remove_numbers.sh | python ../scripts/read_to_vw.py > reads.shuf.txt
+reads.shuf.txt: train_me.fq
+	cat n*.fq* | python ../scripts/shuf.py | ../scripts/remove_numbers.sh | python ../scripts/read_to_vw.py > reads.shuf.txt
 
 reads_trained.model: reads.shuf.txt
-	head -n 1000 reads.shuf.txt | ../bin/vw --oaa 3 --binary --ngram 500 --passes=400 --threads  -f reads_trained.model --cache_file .cache && rm .cache
+	head -n 300 reads.shuf.txt | ../bin/vw --oaa 3 --binary --ngram 5 --passes=20 --threads  -f reads_trained.model --cache_file .cache && rm .cache
 
 test_reads.txt: reads_trained.model
-	cat reads.shuf.txt | ../bin/vw -i reads_trained.model -p /dev/stdout | tee $@ | python ../scripts/make_confusion_matrix.py --classes mappings.text --tidy
+	if [ -f "reads_model.conf.txt" ]; then rm reads_model.conf.txt; fi; cat reads.shuf.txt | ../bin/vw -i reads_trained.model -p /dev/stdout | tee $@ | python ../scripts/make_confusion_matrix.py --classes mappings.text --tidy > reads_model.conf.txt 
+
+mash_reads.fq:
+	cat n1*.fq* | ../scripts/shuf.py > $@
+
+ref.msh: mash_reads.fq
+	../bin/mash sketch -s 1000 -k 21 -o $@ hpv_1.fa hpv_2.fa hpv_16.fa
+
+test.mashed.txt: ref.msh mash_reads.fq
+	python mashify.py --sketch ref.msh --reads mash_reads.fq > test.mashed.txt && cat test.mashed.txt | sed s/".fa"//g | sed s/".vg_[0-9]*"//g | cut -f 1,2 -d$$'\t' | sed s/"$$"/"\t1"/g | sed s/"\t"/","/g > mash.pre_conf.txt && python ../mash_confusion_matrix.py --i mash.pre_conf.txt --classes = mappings.text > mash.conf.txt
 
 
 .PHONY: run clean clobber
@@ -65,5 +74,7 @@ clobber: clean
 	$(RM) *.xg
 	$(RM) *.gam
 	$(RM) *.fq
+	$(RM) *.tmp
 	$(RM) jobfile.txt
+	$(RM) n*.txt
 
