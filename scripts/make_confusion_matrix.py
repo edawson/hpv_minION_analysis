@@ -32,7 +32,9 @@ def mat_to_string(mat, printKeys=True, useComma=True):
 
     
     if printKeys:
-        ostr = "Actual" + sep
+        #ostr = "Actual" + sep
+        #ostr = sep
+        ostr = ""
         # Header time:
         ostr += sep.join(ordered_keys) + "\n"
 
@@ -53,8 +55,12 @@ def mat_to_tidy(mat):
     # Actual Call
     # HPV16 HPV1
 
-    print "Not implemented"
-    return 1
+    ostr = ""
+    for key_one in ordered_keys:
+        for key_two in ordered_keys:
+            ostr += str(key_one) + "," + str(key_two) + "," + str(mat[key_one][key_two]) + "\n"
+
+    return ostr
 
 if __name__ == "__main__":
     
@@ -80,4 +86,4 @@ if __name__ == "__main__":
             mat[numkey_to_class[tokens[0]]][tokens[1].strip()] += 1
 
     printKeys = False if args.noKeys else True
-    print mat_to_string(mat, printKeys)
+    print mat_to_tidy(mat) if args.tidy else mat_to_string(mat, printKeys)

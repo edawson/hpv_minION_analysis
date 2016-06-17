@@ -13,9 +13,9 @@ scripts_dir=/home/eric/sandbox/hpv_minION_analysis/scripts
 node_len=50
 
 num_reads=1000
-read_len=7500
-e_rate=0.05
-i_rate=0.10
+read_len=7000
+e_rate=0.10
+i_rate=0.15
 r_seed=110
 
 function construct() {

@@ -7,7 +7,7 @@ all: $(BIN_DIR)/vw $(BIN_DIR)/vg $(BIN_DIR)/mash
 $(BIN_DIR)/vw: .pre-build
 	ln -s `pwd`/vw-8.20151121 `pwd`/$(BIN_DIR)/vw
 
-$(BIN_DIR)/vg: ./vg/bin/vg .ppre-build
+$(BIN_DIR)/vg: ./vg/bin/vg .pre-build
 	ln -s `pwd`/vg/bin/vg `pwd`/$(BIN_DIR)/vg
 
 ./vg/bin/vg:

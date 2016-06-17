@@ -47,7 +47,7 @@ if __name__ == "__main__":
         for rec in f_dict:
             with open(rec.strip("@") + ".tmp", "w") as ofi:
                 ofi.write(f_dict[rec].stringify())
-            run_str = "../bin/mash dist -i " + sketch + " " + rec.strip("@") + "| sort -n -k3 | head -n 1 >> mashed.pred.txt"
+            run_str = "../bin/mash dist -i " + sketch + " " + rec.strip("@") + ".tmp | sort -n -k3 | head -n 1 "
             call(run_str, shell=True)
             count += 1
             if count % 10 == 0:
