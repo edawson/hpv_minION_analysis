@@ -40,7 +40,7 @@ test_pred.txt: trained.model train_me.vecs.wabbit train_me.fq train_me.gam $(bas
 	if [  -e .cache ]; then rm .cache; fi && cat train_me.vecs.wabbit | $(WABBIT) -i trained.model -p /dev/stdout | tee $@ | python ../scripts/make_confusion_matrix.py -c mappings.text --tidy > test.conf.txt
 
 reads.shuf.txt: train_me.fq
-	cat n*.fq* | python ../scripts/shuf.py | ../scripts/remove_numbers.sh | python ../scripts/read_to_vw.py > reads.shuf.txt
+	cat train_me.fq | python ../scripts/shuf.py | ../scripts/remove_numbers.sh | python ../scripts/read_to_vw.py > reads.shuf.txt
 
 reads_trained.model: reads.shuf.txt
 	head -n 300 reads.shuf.txt | ../bin/vw --oaa 3 --binary --ngram 5 --passes=20 --threads  -f reads_trained.model --cache_file .cache && rm .cache
